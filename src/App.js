@@ -4,6 +4,7 @@ import { Helmet } from "react-helmet";
 import { useState } from "react";
 import { Header } from "./components/Header";
 import galleria from "./images/galleria..png";
+import Gallery from "./components/Gallery";
 const GlobalStyle = createGlobalStyle`
   *{
     margin: 0;
@@ -30,6 +31,11 @@ function App() {
         <img src={galleria} alt="" />
         <SlideShowText>START SLIDESHOW</SlideShowText>
       </Header>
+      <GallerySection>
+        {info.map((item) => {
+          return <Gallery name={item.name} img={item.images.thumbnail} />;
+        })}
+      </GallerySection>
     </Container>
   );
 }
@@ -46,4 +52,8 @@ const SlideShowText = styled.p`
   font-size: 12px;
   letter-spacing: 2.57143px;
   color: #7d7d7d;
+`;
+const GallerySection = styled.section`
+  width: 90%;
+  margin: 0 auto;
 `;
